@@ -1,4 +1,8 @@
-export function UserTable({ users }) {
+import { useContext } from "react";
+import { UsersContext } from "../context/UsersContext";
+
+export function UserTable() {
+  const { users } = useContext(UsersContext);
   return (
     <div>
       <table className="w-full border-separate">

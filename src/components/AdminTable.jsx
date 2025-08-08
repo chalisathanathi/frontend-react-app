@@ -1,41 +1,44 @@
-import axios from "axios";
-import { useState } from "react";
+import { useContext } from "react";
+import { UsersContext } from "../context/UsersContext";
 
 // const API_POST = "https://jsd5-mock-backend.onrender.com/members";
 // const API_DELETE = "https://jsd5-mock-backend.onrender.com/member";
 
-export function AdminTable({ users, setUsers, fetchUsers, API }) {
-  const [form, setForm] = useState({
-    name: "",
-    lastname: "",
-    position: "",
-  });
+export function AdminTable() {
+  // const [form, setForm] = useState({
+  //   name: "",
+  //   lastname: "",
+  //   position: "",
+  // });
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  // const handleChange = (e) => {
+  //   setForm({ ...form, [e.target.name]: e.target.value });
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post(API, form);
-      await fetchUsers();
-      // Reset the form
-      setForm({
-        name: "",
-        lastname: "",
-        position: "",
-      });
-    } catch (error) {
-      console.error("Error creating user:", error);
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios.post(API, form);
+  //     await fetchUsers();
+  //     // Reset the form
+  //     setForm({
+  //       name: "",
+  //       lastname: "",
+  //       position: "",
+  //     });
+  //   } catch (error) {
+  //     console.error("Error creating user:", error);
+  //   }
+  // };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("Delete this user?")) return;
-    await axios.delete(`${API}/${id}`);
-    setUsers(users.filter((user) => user.id !== id));
-  };
+  // const handleDelete = async (id) => {
+  //   if (!window.confirm("Delete this user?")) return;
+  //   await axios.delete(`${API}/${id}`);
+  //   setUsers(users.filter((user) => user.id !== id));
+  // };
+
+  const { users, form, handleSubmit, handleChange, handleDelete } =
+    useContext(UsersContext);
 
   return (
     <div className="flex flex-col items-center">

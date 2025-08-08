@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./views/Home.jsx";
 import Owner from "./views/Owner.jsx";
 import { Layout } from "./views/Layout.jsx";
+import { UsersProvider } from "./context/UsersProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,9 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router}>
-    <App />
-  </RouterProvider>
+  <UsersProvider>
+    <RouterProvider router={router}>
+      <App />
+    </RouterProvider>
+  </UsersProvider>
 );

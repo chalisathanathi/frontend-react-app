@@ -1,24 +1,26 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { UserTable } from "../components/UserTable";
 import { AdminTable } from "../components/AdminTable";
-import axios from "axios";
+import { UsersContext } from "../context/UsersContext";
 
 // const API_GET = "https://jsd5-mock-backend.onrender.com/members";
 
-const API = "https://67eca027aa794fb3222e43e2.mockapi.io/members";
+// const API = "https://67eca027aa794fb3222e43e2.mockapi.io/members";
 
 export default function Home() {
-  const [view, setView] = useState(null);
-  const [users, setUsers] = useState([]);
+  // const [view, setView] = useState(null);
+  // const [users, setUsers] = useState([]);
 
-  const fetchUsers = async () => {
-    try {
-      const res = await axios.get(API);
-      setUsers(res.data);
-    } catch {
-      alert("Failed to fetch users");
-    }
-  };
+  // const fetchUsers = async () => {
+  //   try {
+  //     const res = await axios.get(API);
+  //     setUsers(res.data);
+  //   } catch {
+  //     alert("Failed to fetch users");
+  //   }
+  // };
+
+  const { view, setView, fetchUsers } = useContext(UsersContext);
 
   useEffect(() => {
     fetchUsers();
@@ -47,17 +49,12 @@ export default function Home() {
       <section className="w-full flex justify-center gap-x-3">
         {view === "user" ? (
           <section className=" p-5  flex">
-            <UserTable users={users} />
+            <UserTable />
           </section>
         ) : view === "admin" ? (
           <section className=" p-5  flex">
             {" "}
-            <AdminTable
-              users={users}
-              setUsers={setUsers}
-              fetchUsers={fetchUsers}
-              API={API}
-            />
+            <AdminTable />
           </section>
         ) : null}
       </section>
