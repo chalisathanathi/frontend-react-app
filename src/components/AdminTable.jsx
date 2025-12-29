@@ -45,24 +45,24 @@ export function AdminTable() {
       <form onSubmit={handleSubmit} className="pb-3">
         <input
           onChange={handleChange}
-          value={form.name}
-          name="name"
+          value={form.username}
+          name="username"
           className="bg-white mx-1 w-32 px-2 rounded border"
-          placeholder="Name"
+          placeholder="Username"
         />
         <input
           onChange={handleChange}
-          value={form.lastname}
-          name="lastname"
+          value={form.email}
+          name="email"
           className="bg-white mx-1 w-32 px-2 rounded border"
-          placeholder="Last name"
+          placeholder="Email"
         />
         <input
           onChange={handleChange}
-          value={form.position}
-          name="position"
+          value={form.role}
+          name="role"
           className="bg-white mx-1 w-32 px-2 rounded border"
-          placeholder="Position"
+          placeholder="Role"
         />
         <button
           type="submit"
@@ -74,21 +74,21 @@ export function AdminTable() {
       <table className="w-full border-separate">
         <thead>
           <tr className="text-center font-bold bg-gray-200">
-            <th className="border rounded-tl-lg p-2">Name</th>
-            <th className="border p-2">Last name</th>
-            <th className="border p-2">Position</th>
+            <th className="border rounded-tl-lg p-2">Username</th>
+            <th className="border p-2">Email</th>
+            <th className="border p-2">Role</th>
             <th className="border rounded-tr-lg p-2">Action</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id} className="bg-white">
-              <td className="border p-2 ">{user.name}</td>
-              <td className="border p-2 ">{user.lastname}</td>
-              <td className="border p-2 ">{user.position}</td>
+            <tr key={user._id} className="bg-white">
+              <td className="border p-2 ">{user.username}</td>
+              <td className="border p-2 ">{user.email}</td>
+              <td className="border p-2 ">{user.role}</td>
               <td className="border p-2 ">
                 <button
-                  onClick={() => handleDelete(user.id)}
+                  onClick={() => handleDelete(user._id)}
                   className="cursor-pointer bg-rose-400 hover:bg-rose-500 text-white px-2 rounded-xl"
                 >
                   Delete
