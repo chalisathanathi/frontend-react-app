@@ -3,7 +3,8 @@ import { UserTable } from "../components/UserTable";
 import { AdminTable } from "../components/AdminTable";
 import axios from "axios";
 
-const API = "https://67eca027aa794fb3222e43e2.mockapi.io/members";
+// const API = "https://67eca027aa794fb3222e43e2.mockapi.io/members";
+const API = "http://localhost:3000/api/v2/users";
 
 export default function Home() {
   const [view, setView] = useState(null);
@@ -12,7 +13,7 @@ export default function Home() {
   const fetchUsers = async () => {
     try {
       const res = await axios.get(API);
-      setUsers(res.data);
+      setUsers(res.data.data);
     } catch {
       alert("Failed to fetch users");
     }
