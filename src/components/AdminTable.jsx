@@ -43,7 +43,7 @@ export function AdminTable({ users, setUsers, fetchUsers, API }) {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this user?")) return;
-    await axios.delete(`${API}}/${id}`, {withCredentials: true});
+    await axios.delete(`${API}/${id}`, {withCredentials: true});
     setUsers(users.filter((user) => user._id !== id));
   };
 
